@@ -39,7 +39,7 @@
 .container .imgBx img {
     position: relative;
     width: 700px;
-    transform: rotate(-30deg);
+    transform: rotate(0deg) !important;
     left: -50px;
     transition: .9s linear;
 }
@@ -135,7 +135,7 @@
 
     .container .imgBx {
         padding: 40px;
-        box-sizing: border-box
+        box-sizing: border-box;
         width: 100% !important;
         height: auto;
         text-align: center;

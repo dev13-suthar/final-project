@@ -3,7 +3,9 @@
 
   include 'config.php';
   include 'login.php';
+  
  $username=$_SESSION['email'];
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +19,18 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="\final project\css\search.css">
+        <style>
+          #img img{
+            height:400px;
+            width:440px;
+            transform: rotate(0deg);
+            left:4px;
+
+          }
+         </style>
+        
 </head>
+
 
 <body>
     <nav>
@@ -50,9 +63,8 @@
     ?>
     <div class="outer">
         <div class="container">
-            <div class="imgBx">
-                <img src=""
-                    alt="">
+            <div class="imgBx" id="img">
+               <img src=" <?php echo "img/".$data['images'] ?>" alt=" ">
             </div>
             <div class="details">
                 <div class="content">

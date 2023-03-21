@@ -16,7 +16,7 @@ include 'login.php';
 
 </head>
 <body>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
       
         <div>
         <center><h2> upload games information </h2></center>
@@ -36,7 +36,7 @@ include 'login.php';
               </select>
           
             <div class="game-photo">
-                <input type="file" accept="image/* ,.png , .jpeg, .jpg, .png " name="img_photo"  >
+                <input type="file"  name="image"  >
             </div>
             <div class="price">
 
@@ -68,10 +68,8 @@ include 'login.php';
 </html>
 <?php
 
- 
-   if(isset($_POST['submit']))
-   {
-
+if(isset($_POST['submit']))
+{    //data for user
      $fname=$_POST['firstname'];
      $lname=$_POST['lastname'];
      $email=$_SESSION['email'];
@@ -80,13 +78,27 @@ include 'login.php';
      $games_id=$_POST['game_id'];
      $description=$_POST['description'];
      $price=$_POST['price'];
-     $createcard=mysqli_query($connection,"insert into infogames (firstname,lastname,email,category_of_games,mobileno,games_id,description,price) values ('$fname','$lname','$email','$games','$mobileno','$games_id','$description','$price')");
 
+     //image details 
+    $file_name=$_FILES['image']['name'];
+     $file_size=$_FILES['image']['size'];
+     $file_tmp=$_FILES['image']['tmp_name'];
+     $file_type=$_FILES['image']['type'];
+     $sellid=$_POST['sellid'];
+     
+     
+     
+     move_uploaded_file($file_tmp,"img/". $file_name);
+     
+    $createcard=mysqli_query($connection,"insert into infogames (firstname,lastname,email,category_of_games,mobileno,games_id,description,price,images) values ('$fname','$lname','$email','$games','$mobileno','$games_id','$description','$price','$file_name')");
+
+     
+      echo '<script> 
+      alert(" card is successfully created");
+      window.location.href="index.php";
       
-       echo '<script> 
-       alert(" card is successfully created");
-       window.location.href="index.php";
-       
-       </script>';
-   }
+      </script>';
+
+  }
+
 ?>

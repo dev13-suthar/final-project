@@ -3,7 +3,8 @@
 include 'config.php';
 include 'login.php';
 
-$username=$_SESSION['email'];
+    $username=$_SESSION['email'];
+
 $query="select * from infogames  where email='$username'";
 $fire=mysqli_query($connection,$query);
 
@@ -49,7 +50,10 @@ $fire=mysqli_query($connection,$query);
         text-align:center;
         background-color:#fff;
        }
-        
+       img 
+       {
+        height:100px;
+       }
        
     </style>
 </head>
@@ -85,7 +89,7 @@ $fire=mysqli_query($connection,$query);
         <tr>
             
             <td><?php echo $data['sellid']?></td>
-            <td></td>
+            <td><img src="<?php  echo "img/".$data['images'];?>"></td>
             <td><?php echo $data['category_of_games']?></td>
             <td><?php echo $data['mobileno']?></td>
             <td><?php echo $data['description']?></td>
